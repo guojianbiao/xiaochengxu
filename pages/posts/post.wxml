@@ -1,0 +1,20 @@
+<import src="post-item/post-item-template.wxml"/>
+<view>
+  <swiper catchtap="onSwiperTap" indicator-dots="{{true}}" autoplay="{{true}}" interval="4000" circular="{{true}}">
+    <swiper-item>
+      <image src="/images/wx.png" data-postId="3"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/vr.png" data-postId="4"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/iqiyi.png" data-postId="5"></image>
+    </swiper-item>
+  </swiper>
+  <block wx:for="{{post_key}}" wx:for-item="item">
+  <!-- 把item传进去，只是其中的一小块数据，生成一小块模板, 因为这里有循环，所以有多个模板-->
+    <view catchtap="onPostTap" data-postId="{{item.postId}}">
+      <template is="postItem" data="{{...item}}" />
+    </view> 
+  </block>
+</view>
